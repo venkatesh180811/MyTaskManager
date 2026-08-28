@@ -16,7 +16,10 @@ function addTask() {
         return;
     }
 
-    tasks.push(taskText);
+    tasks.push({
+    text: taskText,
+    completed: false
+});
 
     taskInput.value = "";
 
@@ -29,20 +32,41 @@ function displayTasks() {
 
     tasks.forEach(function(task, index) {
 
-    const li = document.createElement("li");
+        const li = document.createElement("li");
 
-    li.textContent = task;
+        const taskText = document.createElement("span");
 
-    const deleteButton = document.createElement("button");
+        taskText.textContent = task.text;
 
-    deleteButton.textContent = "Delete";
+        if (task.completed) {
+            taskText.style.textDecoration = "line-through";
+        }
 
-    deleteButton.addEventListener("click", function() {
-        deleteTask(index);
+        taskText.addEventListener("click", function() {
+            toggleTask(index);
+        });
+
+        const deleteButton = document.createElement("button");
+
+        deleteButton.textContent = "Delete";
+
+        deleteButton.addEventListener("click", function() {
+            deleteTask(index);
+        });
+
+        li.appendChild(taskText);
+        li.appendChild(deleteButton);
+
+        taskList.appendChild(li);
+
     });
+     taskCount.textContent = tasks.length;
+}
 
     
-    function deleteTask(index) {
+
+    
+function deleteTask(index) {
 
     tasks.splice(index, 1);
 
@@ -53,7 +77,12 @@ function displayTasks() {
 
     taskList.appendChild(li);
 
-});
+function toggleTask(index) {
 
-    taskCount.textContent = tasks.length;
+    tasks[index].completed = !tasks[index].completed;
+
+    displayTasks();
 }
+!tasks[index].completed
+
+   
