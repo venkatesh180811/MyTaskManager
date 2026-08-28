@@ -27,15 +27,33 @@ function displayTasks() {
 
     taskList.innerHTML = "";
 
-    tasks.forEach(function(task) {
+    tasks.forEach(function(task, index) {
 
-        const li = document.createElement("li");
+    const li = document.createElement("li");
 
-        li.textContent = task;
+    li.textContent = task;
 
-        taskList.appendChild(li);
+    const deleteButton = document.createElement("button");
 
+    deleteButton.textContent = "Delete";
+
+    deleteButton.addEventListener("click", function() {
+        deleteTask(index);
     });
+
+    
+    function deleteTask(index) {
+
+    tasks.splice(index, 1);
+
+    displayTasks();
+}
+
+    li.appendChild(deleteButton);
+
+    taskList.appendChild(li);
+
+});
 
     taskCount.textContent = tasks.length;
 }
