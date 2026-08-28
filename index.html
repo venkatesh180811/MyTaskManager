@@ -4,13 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>My Task Manager</h1>
+    <div class="container">
 
-    <p>Git & GitHub Practice Project 🚀</p>
+        <h1>My Task Manager</h1>
+
+        <div class="task-input">
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <button id="addTaskBtn">Add Task</button>
+        </div>
+
+        <ul id="taskList">
+        </ul>
+
+        <div class="task-info">
+            <p>Total Tasks: <span id="taskCount">0</span></p>
+        </div>
+
+    </div>
 
 </body>
 </html>
